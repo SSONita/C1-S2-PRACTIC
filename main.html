@@ -56,25 +56,20 @@
         }
         displayTask(tasks);
         function addTask(){
-            let taskInput = document.getElementById("taskInput");
-            let prioritySelect = document.getElementById("prioritySelect");
+            const taskDescription = document.getElementById("taskInput").value;
+            const taskPriority = parseInt(document.getElementById("prioritySelect").value);
 
-            let taskName = taskInput.value.trim();
-            let taskPriority = parseInt(prioritySelect.value);
+            const newTask = {
+                description: taskDescription,
+                priority: taskPriority
+            };
 
-            if (taskName === "") {
-                alert("Please enter a task name.");
-                return;
-            }
-
-            let newTask = { description: taskName, priority: taskPriority };
             tasks.push(newTask);
 
-            displayTasks();
-            taskInput.value = "";
+            displayTask(tasks);
+            document.getElementById("taskInput").value = "";
+            document.getElementById("prioritySelect").value = "1";
         }
-        document.getElementById("addTaskBtn").addEventListener("click", addTask);
-        displayTask();
     </script>
 </body>
 </html>
